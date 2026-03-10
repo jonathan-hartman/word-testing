@@ -18,7 +18,7 @@ for individual health and if people are happier when they are old, it
 also helps that they complain less and don't go to the doctor as often,
 which is good for the stressed healthcare system.
 
-\[Correct and improve the abstract\]
+This Abstract is now better than it was previously
 
 # Introduction
 
