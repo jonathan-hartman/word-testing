@@ -3,9 +3,6 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-git config --global user.name "GitHub Actions"
-git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
 # Find all .docx files in the repository
 for docx_file in $(find . -name '*.docx'); do
   # Define the output markdown file name
@@ -17,9 +14,3 @@ for docx_file in $(find . -name '*.docx'); do
   # Add the generated markdown file to git
   git add "$markdown_file"
 done
-
-# Commit the changes with a message
-git commit -m "Convert .docx files to Markdown [skip ci]" || echo "No changes to commit"
-
-# Push the commit back to the repo
-git push || echo "No changes to push"
