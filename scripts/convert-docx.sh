@@ -19,4 +19,7 @@ for docx_file in $(find . -name '*.docx'); do
 done
 
 # Commit the changes with a message
-git commit -m "Convert .docx files to Markdown" || echo "No changes to commit"
+git commit -m "Convert .docx files to Markdown [skip ci]" || echo "No changes to commit"
+
+# Push the commit back to the repo
+git push || echo "No changes to push"
