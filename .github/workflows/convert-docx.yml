@@ -1,0 +1,36 @@
+name: Convert DOCX to Markdown
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Run conversion script
+        run: |
+          chmod +x ./scripts/convert-docx.sh
+          ./scripts/convert-docx.sh
+
+      - name: Commit generated Markdown files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add *.md
+          git commit -m "Convert DOCX files to Markdown" || echo "No changes to commit"
